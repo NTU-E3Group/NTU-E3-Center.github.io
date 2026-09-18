@@ -11,6 +11,12 @@ reference `{{ base_url }}` instead of hardcoding the domain.
 # static/CNAME (that file *is* the domain, by GitHub Pages design).
 SITE_URL = "https://e3center.caece.net"
 
+# Where the site now lives (no trailing slash). Every built page is a
+# client-side redirect to the same path on this host (GitHub Pages cannot send
+# HTTP 301s) — see templates/partials/redirect.html. Canonical / og:url tags
+# point here too so the old pages don't claim to be canonical while redirecting.
+REDIRECT_HOST = "https://e3center.net"
+
 # Compiled-site output directory (served by GitHub Pages). Gitignored.
 OUTPUT_DIR = "docs"
 

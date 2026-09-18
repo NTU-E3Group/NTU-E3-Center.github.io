@@ -1,0 +1,8 @@
+{# The site has moved to REDIRECT_HOST (config.py). GitHub Pages cannot send
+   HTTP 301s, so every page redirects client-side. The inline script fires first
+   and preserves the current path/query/hash; the meta refresh is the no-JS
+   fallback and points at `redirectTarget` — this page's URL on the new host,
+   which the including template sets right before the include. #}
+    <script>location.replace('{{ REDIRECT_HOST }}' + location.pathname.replace(/\/index\.html$/, '/') + location.search + location.hash);</script>
+    <meta http-equiv="refresh" content="0; url={{ redirectTarget }}">
+

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% set redirectTarget = REDIRECT_HOST ~ news['pageLink'] %}
+    {% include 'partials/redirect.html' %}
     <title>{{ news.get('shortTitle', news['title']) }} | E3 Center</title>
     {% set _body_text = seo_strip_markdown(news.get('content', '')) %}
     {% set _is_placeholder = (not _body_text) or ('to be updated' in _body_text|lower) %}
@@ -13,9 +15,9 @@
     {% set _news_kw = _news_topic_kw + ['E3 Center', 'E3 group', news.get('category', 'News'), 'sustainable energy', 'NTU', '台大', '國立臺灣大學', 'I-Yun Lisa Hsieh', '謝依芸', '20' ~ news['year'][1:]] %}
     <meta name="keywords" content="{{ _news_kw | select | list | join(', ') }}">
 
-    <link rel="canonical" href="https://e3center.caece.net{{ news['pageLink'] }}" />
+    <link rel="canonical" href="{{ redirectTarget }}" />
 
-    <meta property="og:url" content="https://e3center.caece.net{{ news['pageLink'] }}" />
+    <meta property="og:url" content="{{ redirectTarget }}" />
     <meta property="og:title" content="{{ news.get('shortTitle', news['title']) }} | E3 Center" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="{{ 'https://e3center.caece.net' ~ news['imgPath'] if news.get('imgPath') else 'https://e3center.caece.net/assets/images/og-image-1200x630.png' }}" />

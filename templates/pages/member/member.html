@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% set redirectTarget = REDIRECT_HOST ~ member['pageLink'] ~ '/' %}
+    {% include 'partials/redirect.html' %}
     {% set _bilingual_name = (member['chiNameEng'] ~ ' ' ~ member['chiName']) if member.get('chiName') else member['chiNameEng'] %}
     <title>{{ _bilingual_name }} | E3 Center, NTU</title>
     {# Clean interest content: strip tags, normalise slash-bullets to commas #}
@@ -65,9 +67,9 @@
     <meta name="keywords" content="{{ _all_kw | join(', ') }}">
     <meta name="author" content="{{ member['engName'] }}">
 
-    <link rel="canonical" href="https://e3center.caece.net{{ member['pageLink'] }}/" />
+    <link rel="canonical" href="{{ redirectTarget }}" />
 
-    <meta property="og:url" content="https://e3center.caece.net{{ member['pageLink'] }}/" />
+    <meta property="og:url" content="{{ redirectTarget }}" />
     <meta property="og:title" content="{{ _bilingual_name }} | E3 Center, NTU" />
     <meta property="og:type" content="profile" />
     <meta property="og:image" content="https://e3center.caece.net/assets/images/og-image-1200x630.png" />
