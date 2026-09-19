@@ -13,7 +13,7 @@ from lib.excel_to_content import build_member_data
 from lib import seo_helpers
 from config import (SITE_URL, OUTPUT_DIR, SUBPAGE_IMG_WIDTHS,
                     MEMBER_IMG_WIDTHS, LAZY_IMG_WIDTHS,
-                    WEBP_QUALITY, WEBP_LAZY_QUALITY)
+                    WEBP_QUALITY, WEBP_LAZY_QUALITY, REDIRECT_HOST)
 _member_data = build_member_data()
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -26,6 +26,11 @@ env = Environment(loader=FileSystemLoader(['templates']),
 env.globals['seo_meta_description'] = seo_helpers.generate_meta_description
 env.globals['seo_strip_markdown'] = seo_helpers.strip_markdown
 env.globals['seo_detect_language'] = seo_helpers.detect_language
+
+# Site origin and redirect destination, so the head partial
+# (templates/partials/redirect.html) and canonical links never hardcode a domain.
+env.globals['SITE_URL'] = SITE_URL
+env.globals['REDIRECT_HOST'] = REDIRECT_HOST
 
 
 def bold_author(authors_str, name):

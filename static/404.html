@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | E3 Center</title>
-    <link href="https://e3center.caece.net" rel="canonical" />
-    <meta http-equiv="refresh" content="8; url=https://e3center.caece.net">
+    <!-- The site has moved to e3center.net: send unknown paths to the same
+         path on the new host (its own redirects/404 take over from there). -->
+    <script>location.replace('https://e3center.net' + location.pathname.replace(/\/index\.html$/, '/') + location.search + location.hash);</script>
+    <link href="https://e3center.net/" rel="canonical" />
+    <meta http-equiv="refresh" content="0; url=https://e3center.net/">
 
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="YA_W9CdDDbSUMcW4Dr4CPEbGFWW61ZRHtBs-gmPTRlU" />
@@ -93,7 +96,7 @@
         <h1>404...Page Not Found...</h1>
         <p>This is not the web page that you are looking for.</p>
         <p>You will be redirected shortly.</p>
-        <p>If you are not redirected automatically, please <a href="https://e3center.caece.net">click here</a>.</p>
+        <p>If you are not redirected automatically, please <a href="https://e3center.net/">click here</a>.</p>
     </div>
 </body>
 </html>

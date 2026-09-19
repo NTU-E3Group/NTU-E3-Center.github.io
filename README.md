@@ -1,6 +1,26 @@
-# NTU E3 Center Official Website
+# NTU E3 Center Official Website (legacy)
 
-Live site: [e3center.caece.net](https://e3center.caece.net)
+> **The site has moved to [e3center.net](https://e3center.net).**
+>
+> Since September 2026 every page served at [e3center.caece.net](https://e3center.caece.net)
+> is a client-side redirect to the same path on the new site. This repository exists to keep that
+> redirect alive: **do not delete or archive it**, and leave `static/CNAME` and the GitHub Pages
+> settings as they are. The new site's source code lives in its own repository, not here.
+>
+> - **Old site preserved:** the last version without any redirect code is on the
+>   [`legacy-site`](https://github.com/NTU-E3Group/NTU-E3-Center.github.io/tree/legacy-site) branch.
+>   It is a frozen snapshot; do not commit to it.
+> - **How the redirect works:** GitHub Pages cannot send HTTP 301s, so each page carries an inline
+>   script (preserves path, query and hash) plus a 0-second `meta refresh` fallback. The destination
+>   is `REDIRECT_HOST` in `config.py`; the snippet is `templates/partials/redirect.html`, included by
+>   `base.html` and the four standalone item templates. `static/404.html` catches unknown paths.
+> - **Why the full generator is still here:** every old URL keeps returning HTTP 200 with an instant
+>   redirect, and `sitemap.xml` still lists the old URLs, so search engines recrawl them and transfer
+>   them to the new site. Once search results have moved over, `source` can be slimmed down to a
+>   static redirect (`index.html`, `404.html`, `CNAME`, `robots.txt`); the generator stays on `legacy-site`.
+
+Live site: [e3center.net](https://e3center.net) — this repository serves the redirect at
+[e3center.caece.net](https://e3center.caece.net).
 
 Project started: Fall 2023
 
